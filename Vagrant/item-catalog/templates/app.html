@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name = "viewport" content = "user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+    <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/magnific-popup.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+
+</head>
+<body>
+
+    <div class="ghbuttonparent">
+    {% if user_name %}
+        <a href="javascript:openCompanyAdd()"><i class="fa fa-plus fagrey tip leftit faaddcompany" data-tip="Add a new company"></i></a>
+        <a href="{{ url_for("logout") }}" class="ghbutton button">
+        <i class="fa fa-github"> Log out of {{user_name}}</i></a>
+        <a href="javascript:openResetData()"><i class="fa fa-database fagrey tip rightit fareset" data-tip="!reset ALL data to the default state!"></i></a>
+    {% else %}
+        <a href="{{ url_for("login") }}" class="ghbutton">
+        <i class="fa fa-github"> Login with Github</i></a>
+    {% endif %}
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="flashlist">
+            {% for message in messages %}
+            <li><strong class="flash">{{ message }}</strong></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+    {% if frontpage == "false" %}
+    <a class="menulink" href="{{ url_for('index') }}">Full Catalog</a>
+    {% else %}
+    <!-- <a class="menulink" href="{{ url_for('index') }}">Add Company</a> -->
+    {% endif %}
+
+<ul class="accmen acclist">
+    {% for company in companies %}
+    <li class="accmensub">
+        <div class="accmentitle">
+            {% if frontpage == "true" %}
+            <div class="fa fa-chevron-down fagrey tip" data-tip="show/hide items"></div>
+            {% else %}
+            <div class="fa fa-chevron-up fagrey fadiv"></div>
+            {% endif %}
+            {{company.name}}
+            {% if frontpage == "true" %}
+            <a class="menulink" href="{{ url_for('company', company_id = company.id) }}"><i class="fa fa-filter filterlink falink fagrey tip" data-tip="filter to only show this company"></i></a>
+            <a class="menulink" href="{{ company.siteuri }}" target="_blank"><i class="fa fa-external-link extlink falink fagrey tip" data-tip="visit this company's website"></i></a>
+            {% endif %}
+            {% if user_name %}<span class="rightit">
+            <a class="menulink tip" data-tip="Add an item" href="javascript:openItemAdd({{ company.id }})"><i class="fa fa-plus fagrey"></i></a>
+            <a class="menulink tip" data-tip="Edit this company" href="javascript:openEditCompany({{company.id}})"><i class="fa fa-pencil fagrey"></i></a>
+            <a class="menulink tip" data-tip="Delete this company"  href="javascript:openDeleteCompany({{company.id}})"><i class="fa fa-trash fagrey"></i></a><span>
+            {% endif %}
+        </div>
+        {% if frontpage == "true" %}
+        <ul class="accmenchild acclist">
+        {% else %}
+        <ul class="accmenchildfull acclist">
+        {% endif %}
+
+        {% for item in company.items %}
+            <li class="accmenli">
+                <a href="javascript:openItem({{company.id}},{{item.id}});" class="itemlink"><img class = "itemthumb tip"  data-tip="{{ item.name }} {{ item.price }}" src="{{ item.imageuri }}"></a>
+                <a href="javascript:openItem({{company.id}},{{item.id}});" class="itemlink">{{ item.name }}</a>{% if user_name %}<span class="rightit">
+                <a href="javascript:openEditItem({{company.id}},{{item.id}})"  class="itemlink">edit</a><span> - </span>
+                <a href="javascript:openDeleteItem({{company.id}},{{item.id}})"  class="itemlink">delete</a><span>{% endif %}</li>
+        {% endfor %}
+        </ul>
+    </li>
+
+    {% endfor %}
+</ul>
+
+<div class="themodal mfp-hide" id="itemModal">
+    <div id="modal-content">
+        <h3 id="result">This should not be visible yet.  Be sure you have javascript enabled and are using a modern browser.</h3>
+    </div>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,16 @@
+  <div id="modal-content">
+    <h3 id="result">
+    {% if user_name %}      
+      <form action="{{ url_for('add_company', token=token)}}" method = 'post'>
+        <p>new company name:</p>
+        <input type="text" name="company_name">
+        <p>company homepage:</p>
+        <input type="text" name="company_site_uri">
+        <input class="button" type="submit" value='Add this company'>
+        <button class="button" type="button" onclick="closeModal()">Cancel</button>        
+      </form>
+    {% else %}
+      You must be logged in to make edits!
+    {% endif %}        
+    </h3>
+  </div>

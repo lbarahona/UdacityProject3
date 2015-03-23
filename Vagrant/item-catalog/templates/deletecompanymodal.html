@@ -1,0 +1,16 @@
+  <div id="modal-content">
+    <h3 id="result">
+    {% if user_name %}
+      {% if company %}
+      <p>Are you sure you want to <strong class="danger">delete {{company.name}} permanently?</strong>  All items for this company will also be deleted permanently!</p>
+      {% endif %}
+
+    <form action = "{{url_for('delete_company',company_id=company.id, token=token)}}" method = "post">
+      <input  class="button" type="submit" value="Yes, kill it!">
+      <button class="button" type="button" onclick="closeModal()">No, I changed my mind</button>
+    </form>
+    {% else %}
+      You must be logged in to make edits!
+    {% endif %}
+    </h3>
+  </div>

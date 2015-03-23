@@ -1,0 +1,14 @@
+  <div id="modal-content">
+    <h3 id="result">
+    {% if user_name %}            
+      <p>Are you sure you want to <strong class="danger">reset all data permanently?</strong>  All data will be lost and replaced with generic demo data</p>
+      
+    <form action = "{{url_for('reset_data', token=token)}}" method = "post">
+      <input  class="button" type="submit" value="Yes">
+      <button class="button" type="button" onclick="closeModal()">No</button>
+    </form>
+    {% else %}
+      You must be logged in to make edits!
+    {% endif %}
+    </h3>
+  </div>

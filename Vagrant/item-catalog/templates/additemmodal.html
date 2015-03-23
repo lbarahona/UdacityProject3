@@ -1,0 +1,23 @@
+  <div id="modal-content">
+    <h3 id="result">
+    {% if user_name %}
+      {% if company %}      
+      <form action="{{ url_for('add_item', company_id=company.id, token=token)}}" method = 'post'>
+        <h2>Adding item to {{ company.name }}</h2>
+        <p>Item Name:</p>
+        <input type="text" name="item_name">
+        <p>Image URL:</p>
+        <input type="text" name="item_image_uri">
+        <p>Item Price:</p>
+        <input type="text" name="item_price">        
+        <input class="button" type="submit" value='Add this item'>
+        <button class="button" type="button" onclick="closeModal()">Cancel</button>        
+      </form>
+      {% else %}
+      <p>The company was not found!</p>
+      {% endif %}
+    {% else %}
+      You must be logged in to make edits!
+    {% endif %}      
+    </h3>
+  </div>

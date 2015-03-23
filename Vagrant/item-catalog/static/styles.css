@@ -1,0 +1,230 @@
+
+@media only screen and (min-width : 1224px) {
+    html {
+        overflow-y:scroll;
+    }
+}
+html {
+    height: 100%;
+    min-height: 100%
+    overflow-y: scroll;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-size: 16px;
+}
+body {
+    font: normal normal 90% sans-serif;
+    max-width: 500px;
+    margin: 100px auto 50px auto;
+    background: #1f1f1f;
+    text-align: center;
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+input[type=text] {
+    border-radius: 4px;
+    height: 2em;
+    width: 100%;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid #DDDDDD;
+}
+input[type=text]:focus {
+    box-shadow: 0 0 5px rgba(21, 170, 213, 1.0);
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid rgba(21, 170, 213, 1.0);
+
+}
+p {
+    margin-bottom: 0;
+}
+h3 {
+    margin: 0;
+}
+.acclist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+.accmen {
+    margin-bottom: 300px;
+    border: 1px solid #222;
+}
+.accmensub {
+    position: relative;
+}
+.accmentitle {
+    display: block;
+    outline: 0;
+    padding: .7em 1em;
+    color: #fff;
+    font-weight: bold;
+    background: #333;
+    border-bottom: 1px solid #222;
+}
+.menulink {
+    color: #fff;
+}
+.accmenchild {
+    counter-reset: items;
+    height: 0;
+    overflow: hidden;
+    background: #eee;
+    color: #777;
+    font-size: .75em;
+}
+.accmenchildfull {
+    counter-reset: items;
+    overflow: hidden;
+    background: #eee;
+    color: #777;
+    font-size: .75em;
+}
+.accmenli {
+    height: 50px;
+    counter-increment: items;
+    padding: .5em 1.3em;
+    border-bottom: 1px solid #DDD;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+.accmenchild:after {
+    content: counter(items);
+    font-size: 0.857em;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    background: #333;
+    line-height: 1em;
+    height: 1em;
+    padding: .7em .8em;
+    margin: -.8em 0 0 0;
+    color: white;
+    text-indent: 0;
+    text-align: center;
+    font-weight: 500;
+}
+.ghbuttonparent {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+.button{
+    background-color:rgb(244, 244, 244);
+    border-radius: 4px;    
+    margin-top: 15px;
+    padding: 7px;
+    border-color: rgba(0,0,0,0.2);
+    border: 1px solid #DDDDDD;
+}
+.button:hover {
+    background-color:#A6A6A6;
+}
+.button:active {
+    background-color:#2b2b2b;
+}
+.ghbutton {
+    border-radius: 6px;    
+    box-shadow: 0px 1px 3px #000;
+    background-color: #444;
+    color: #fff;
+    padding: 10px;
+    border: none;
+}
+.ghbutton:hover {
+    background-color:green;
+}
+.ghbutton:active {
+    background-color:green;
+}
+
+.flashlist {
+    list-style: none;
+    margin: 5px;
+    padding: 0;
+}
+.flash {
+    color: #D1DF59;
+    text-align: center;
+}
+.offleft {
+    position: absolute;
+    left: -1.5em;
+}
+.leftit{
+    margin-right: auto;
+    float: left;
+    margin-left: 20px;
+}
+.rightit{
+    margin-left: auto;
+    float: right;
+    margin-right: 20px;
+}
+.itemlink {
+    padding-right: .5em;
+}
+.itemthumb {
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    height: 50px;
+}
+.fagrey {
+    color: grey;
+}
+.fagrey:hover {
+    color: #fff;
+}
+.falink {
+    margin-left: .5em;
+}
+.dyntooltip {
+    display:none;
+    position:absolute;
+    border:1px solid #333;
+    background-color:grey;
+    padding:5px;
+    color:#fff;
+    font-size:1em Arial;
+}
+.themodal {
+    position: relative;
+    background: #FFF;
+    padding: 20px;
+    width: auto;
+    max-width: 500px;
+    margin: 20px auto;
+}
+.modalimg {
+    max-width: 98%;
+}
+.faaddcompany {
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: -100%; /*marging set negative to avoid moving login button*/
+}
+.fareset {
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-left: -100%; /*marging set negative to avoid moving login button*/
+}
+.fareset:hover {
+    color: red;
+}
+.danger {
+    font-weight: bold;
+    color: orange;
+}
