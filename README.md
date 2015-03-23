@@ -1,4 +1,4 @@
-# UdacityProject2: Item Catalog
+# UdacityProject3: Item Catalog
 
 This project is part of of Udacity's [Full-Stack Web Developer Nanodegree](https://www.udacity.com/course/nd004).
 
